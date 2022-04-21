@@ -19,15 +19,13 @@ df['gluc'] = np.where((df['gluc'] - df['gluc'].min()) / (df['gluc'].max() - df['
 # Draw Categorical Plot
 def draw_cat_plot():
     # Create DataFrame for cat plot using `pd.melt` using just the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight'.
-    df_cat = None
-
+    df_cat = pd.melt(df, id_vars=['cardio'], value_vars=['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
 
     # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
-    df_cat = None
+    # df_cat = None
 
     # Draw the catplot with 'sns.catplot()'
-
-
+    fig = sns.catplot(data=df_cat, kind="count", x="variable", hue="value", col="cardio")
 
     # Do not modify the next two lines
     fig.savefig('catplot.png')
