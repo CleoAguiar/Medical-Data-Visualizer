@@ -26,7 +26,12 @@ def draw_cat_plot():
     # df_cat = None
 
     # Draw the catplot with 'sns.catplot()'
-    fig = sns.catplot(data=df_cat, kind="count", x="variable", hue="value", col="cardio")
+    graph = sns.catplot(data=df_cat, kind="count", x="variable", hue="value", col="cardio")
+
+    # Define fig for testing.
+    fig = graph.fig
+    # Call legend to make the legend active for testing.
+    ax = fig.axes[0].legend()
 
     # Do not modify the next two lines
     fig.savefig('catplot.png')
